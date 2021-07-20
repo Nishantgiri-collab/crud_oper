@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row mx-auto">
+        <div class="col-sm-4">
+
+<h4>Product page</h4>
+<form method="post" action="">
+    {% csrf_token %}
+    {{prod|crispy}}
+    <input type="submit" class="btn btn-warning">
+</form>
+            <a href="{% url 'seen' %}">cart table</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

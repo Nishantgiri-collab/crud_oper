@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'prodfill' %}">Fill form </a>
+<div class="col-sm-7">
+    <h4 class="text-center"> show all Product info..</h4>
+    <table class="table" >
+        <thead class="thead-dark">
+        <tr>
+            <th>Date</th>
+            <th>Provider</th>
+            <th>Name of Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Stock</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        {% for pr in prod %}
+        <tr>
+            <td>{{pr.Date}}</td>
+            <td>{{pr.Provider}}</td>
+            <td>{{pr.Name_of_product}}</td>
+            <td>{{pr.Price}}</td>
+            <td>{{pr.Quality}}</td>
+            <td>{{pr.Amount}}</td>
+            <td>{{pr.Stock}}</td>
+            <td><a href="{% url 'update' pr.id %}" class="btn btn-success">Update</a></td>
+            <td><form method="post" action="{% url 'delview' pr.id %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

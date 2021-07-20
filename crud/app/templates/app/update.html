@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row mx-auto">
+        <div class="col-sm-4">
+
+<h4> update </h4>
+<form method="post" action="">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <input type="submit" value="Update" class="btn btn-primary">
+    <input type="reset" value="clear" class="btn btn-warning">
+    <a href="{% url 'seen' %}">Back</a>
+</form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
